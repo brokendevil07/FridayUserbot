@@ -22,7 +22,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars 
 CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "**If You Want You Can Leave A Message Here ! My Boss Will Surely See And Reply To You Soon !**"
 USER_BOT_WARN_ZERO = "You Were \n`╔══╗╔╗──────╔╗──────╔╗\n║╔╗║║║──────║║──────║║\n║╚╝╚╣║╔══╦══╣║╔╦══╦═╝║\n║╔═╗║║║╔╗║╔═╣╚╝╣║═╣╔╗║\n║╚═╝║╚╣╚╝║╚═╣╔╗╣║═╣╚╝║\n╚═══╩═╩══╩══╩╝╚╩══╩══╝` \nDue To Trying To Spam Inbox Of My Master !"
 USER_BOT_NO_WARN = ("`Hello My Friend ! This is` **🅷 🅴 🅻 🅻**\n"
-                    "`Private Messaging Security Protocol ⚠️ OF 𝓣𝓗𝓔 𝓗𝓔𝓛𝓛 𝓞𝓦𝓝𝓔𝓡`\n\n"
+                    "`Private Messaging Security Protocol ⚠️ OF 𝓣𝓗𝓔 𝓗𝓔𝓛𝓛  𝓞𝓦𝓝𝓔𝓡`\n\n"
                     "**Currently My Boss 『D』『E』『V』『I』『L』 **\n"
                     f"{DEFAULTUSER} is Busy ! Please Don't Spam My OWNER Inbox\n\n"
                     f"{CUSTOM_MIDDLE_PMP} \n\n"
