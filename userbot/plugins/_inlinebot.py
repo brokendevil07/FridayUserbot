@@ -3,7 +3,7 @@ import asyncio
 import json
 import random
 import re
-from telethon import events, errors, custom, functions, version
+from telethon import events, errors, custom, functions, __version__
 from userbot import CMD_LIST
 import io
 import sys
@@ -19,7 +19,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© Mr. Techno ",
+                "© @devil0707 UserBot Help",
                 text="{}\nTotal Plugins Loaded: {}".format(
                     query, len(CMD_LIST)),
                 buttons=buttons,
@@ -57,7 +57,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Get your own Techno userbot, don't use Mine\n Techno userbot!"
+            reply_pop_up_alert = "Get your own friday userbot, don't use Mine\n ib @StarkxD for learning how to get userbot!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"us_plugin_(.*)")
@@ -76,7 +76,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         else:
             reply_pop_up_alert = help_string
         reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-            © Mr. Techno Userbot ".format(plugin_name)
+            © @devil0707 Userbot ".format(plugin_name)
         try:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         except:
@@ -89,16 +89,18 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     allow_cache=False,
                     caption=plugin_name
                 )
+
+
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = 10
-    number_of_cols = 3
+    number_of_cols = 2
     helpable_plugins = []
     for p in loaded_plugins:
         if not p.startswith("_"):
             helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
     modules = [custom.Button.inline(
-        "{} {} {}".format ("⚒", x , "🛠"),
+        "{} {} {}".format ("😈", x , "😈"),
         data="us_plugin_{}".format(x))
         for x in helpable_plugins]
     pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
@@ -109,7 +111,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
     if len(pairs) > number_of_rows:
         pairs = pairs[modulo_page * number_of_rows:number_of_rows * (modulo_page + 1)] + \
             [
-            (custom.Button.inline("<<<", data="{}_prev({})".format(prefix, modulo_page)),
-             custom.Button.inline(">>>", data="{}_next({})".format(prefix, modulo_page)))
+            (custom.Button.inline("⏪", data="{}_prev({})".format(prefix, modulo_page)),
+             custom.Button.inline("⏩", data="{}_next({})".format(prefix, modulo_page)))
         ]
     return pairs
