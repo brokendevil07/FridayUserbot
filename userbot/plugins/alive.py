@@ -17,9 +17,9 @@ pm_caption += "**Friday OS** : `3.14`\n"
 pm_caption += "**Current Sat** : `StarkGangSat-2.25`\n"
 pm_caption += f"**My OWNER** : {DEFAULTUSER} \n"
 pm_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
-pm_caption += "**เ ɦαƭε รσ૨૨ყ / ℓเα૨ / ƒαҡε / & µ [ƭɦε ɦεℓℓ σωɳε૨]**\n\n"
+pm_caption += "**เ ɦαƭε รσ૨૨ყ / ℓเα૨ / ƒαҡε / & µ [ƭɦε ɦεℓℓ σωɳε૨]** \n \n\n"
 
-pm_caption += "**License** : [MIT Licence](github.com/StarkGang/FridayUserbot/blob/master/LICENSE)\n"
+pm_caption +=  "**License** : [MIT Licence](github.com/StarkGang/FridayUserbot/blob/master/LICENSE)\n"
 pm_caption += "Copyright : By [StarkGang@Github](GitHub.com/StarkGang)\n"
 pm_caption += " [Deploy FridayUserbot](https://telegra.ph/FRIDAY-06-15)"
 #@command(outgoing=True, pattern="^.alive$")
