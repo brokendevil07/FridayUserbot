@@ -177,7 +177,7 @@ def admin_cmd(pattern=None, **args):
     return events.NewMessage(**args)
 
 """ Userbot module for managing events.
- One of the main components of the userbot. """
+ One of the main components of the  userbot. """
 
 from telethon import events
 import asyncio
