@@ -30,7 +30,7 @@ from userbot.utils import admin_cmd
 from userbot import ALIVE_NAME, CUSTOM_STICKER_PACK_NAME, CUSTOM_ANIMATED_PACK_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
-CUSTOM_STICKER_NAME =str(CUSTOM_STICKER_PACK_NAME) if CUSTOM_STICKER_PACK_NAME else "My Boss Friday Volume Pack One"
+CUSTOM_STICKER_NAME =str(CUSTOM_STICKER_PACK_NAME) if CUSTOM_STICKER_PACK_NAME else "My Boss DEVIL Volume Pack One"
 CUSTOM_ANIME_PACK = str(CUSTOM_ANIMATED_PACK_NAME) if CUSTOM_ANIMATED_PACK_NAME else "My Boss Animated Pack"
 FILLED_UP_DADDY = "Invalid pack selected."
 
@@ -143,7 +143,7 @@ async def _(event):
                        # packname = f"Vol._{pack}_FRIDAY{userid}"
                         #packshortname = f"Vol._{pack}_Friday_{userid}_ns"
                     if not await stickerset_exists(bot_conv, packshortname):
-                        await event.edit("**Pack No. **" + str(prevv) + "** full! Making a new Pack, Vol. **" + str(pack))
+                        await event.edit("**Pack No. **" + str(prevv) + "** SABAR KRO , Vol. **" + str(pack))
                         if is_a_s:
                             response = await silently_send_message(bot_conv, "/newanimated")
                         else:
@@ -194,7 +194,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"**Sticker Has Been Kanged SucessFully And Can Be Found** [Here](t.me/addstickers/{packshortname})")
+    await event.edit(f"**STICKER BAN GYA UTHA LO** [YHA SE UTHAO CB](t.me/addstickers/{packshortname})")
 
 
 @borg.on(admin_cmd(pattern="packinfo"))
