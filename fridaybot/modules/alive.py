@@ -54,12 +54,12 @@ pm_caption += "➥ **Copyright** : By [StarkGang@Github](GitHub.com/StarkGang)\n
 pm_caption += "➥ **Check Stats By Doing** `.stat`. \n\n"
 pm_caption += "[🇮🇳 Deploy FridayUserbot 🇮🇳](https://telegra.ph/FRIDAY-06-15)"
 
-PM_IMG = https://telegra.ph/file/689238b19040c5f24b8c5.jpg
+PM_IMG = (https://telegra.ph/file/689238b19040c5f24b8c5.jpg)
 
 @friday.on(friday_on_cmd(pattern=r"me"))
 @friday.on(sudo_cmd(pattern=r"me", allow_sudo=True))
-async def friday(alive):
+async def friday(me):
     await alive.get_chat()
     """ For .me command, check if the bot is running.  """
-    await borg.send_file(alive.chat_id, PM_IMG, caption=pm_caption)
+    await borg.send_file(alive.chat_id, PM_IMG, caption=pm_caption,PM_IMG)
     await alive.delete()
