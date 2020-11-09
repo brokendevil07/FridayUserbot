@@ -1,3 +1,11 @@
+import datetime
+import traceback
+import sys
+import subprocess
+import math
+from time import gmtime, strftime
+from traceback import format_exc
+import asyncio
 from userbot import bot
 from telethon import events
 from var import Var
@@ -9,9 +17,10 @@ import re
 import logging
 import inspect
 
+
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -38,7 +47,8 @@ def command(**args):
             try:
                 cmd = re.search(reg, pattern)
                 try:
-                    cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                    cmd = cmd.group(1).replace("$", "").replace(
+                        "\\", "").replace("^", "")
                 except:
                     pass
 
@@ -114,6 +124,7 @@ def load_module(shortname):
         sys.modules["userbot.plugins."+shortname] = mod
         print("Successfully (re)imported "+shortname)
 
+
 def remove_plugin(shortname):
     try:
         try:
@@ -131,9 +142,10 @@ def remove_plugin(shortname):
     except:
         raise ValueError
 
+
 def admin_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -176,25 +188,15 @@ def admin_cmd(pattern=None, **args):
 
     return events.NewMessage(**args)
 
+
 """ Userbot module for managing events.
  One of the main components of the  userbot. """
-
-from telethon import events
-import asyncio
-from userbot import bot
-from traceback import format_exc
-from time import gmtime, strftime
-import math
-import subprocess
-import sys
-import traceback
-import datetime
 
 
 def register(**args):
     """ Register a new event. """
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -207,13 +209,14 @@ def register(**args):
 
     if "disable_edited" in args:
         del args['disable_edited']
-    
+
     reg = re.compile('(.*)')
     if not pattern == None:
         try:
             cmd = re.search(reg, pattern)
             try:
-                cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                cmd = cmd.group(1).replace("$", "").replace(
+                    "\\", "").replace("^", "")
             except:
                 pass
 
@@ -291,6 +294,7 @@ def errors_handler(func):
 
     return wrapper
 
+
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for both
     upload.py and download.py"""
@@ -349,8 +353,8 @@ def time_formatter(milliseconds: int) -> str:
         ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     return tmp[:-2]
 
+
 class Loader():
     def __init__(self, func=None, **args):
         self.Var = Var
         bot.add_event_handler(func, events.NewMessage(**args))
-

@@ -1,5 +1,5 @@
 """Check if userbot alive. If you change these, you become the gayest gay such that even the gay world will disown you."""
-#IMG CREDITS: @WhySooSerious
+# IMG CREDITS: @WhySooSerious
 import asyncio
 from telethon import events
 from uniborg.util import admin_cmd
@@ -20,12 +20,11 @@ pm_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
 pm_caption += "**เ ɦαƭε รσ૨૨ყ / ℓเα૨ / ƒαҡε / & µ [ƭɦε ɦεℓℓ σωɳε૨]** \n \n\n"
 
 pm_caption += "Copyright : By [StarkGang@Github]\n"
-#@command(outgoing=True, pattern="^.alive$")
+# @command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
     chat = await alive.get_chat()
     await alive.delete()
     """ For .alive command, check if the bot is running.  """
-    await borg.send_file(alive.chat_id, PM_IMG,caption=pm_caption)
-    await alive.delete() 
-    
+    await borg.send_file(alive.chat_id, PM_IMG, caption=pm_caption)
+    await alive.delete()

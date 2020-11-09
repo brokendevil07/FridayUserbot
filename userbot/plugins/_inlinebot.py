@@ -26,6 +26,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 link_preview=False
             )
         await event.answer([result] if result else None)
+
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"helpme_next\((.+?)\)")
     ))
@@ -40,7 +41,6 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         else:
             reply_pop_up_alert = "who the PHC r u giving me inst ! \nGet Your Own Userbot shit . To Learn Ib @StarkxD"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
 
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"helpme_prev\((.+?)\)")
@@ -59,6 +59,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         else:
             reply_pop_up_alert = "Get your own friday userbot, don't use Mine\n ib @StarkxD for learning how to get userbot!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"us_plugin_(.*)")
     ))
@@ -100,7 +101,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
             helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
     modules = [custom.Button.inline(
-        "{} {} {}".format ("💜👿", x , "👿💜 "),
+        "{} {} {}".format("💜👿", x, "👿💜 "),
         data="us_plugin_{}".format(x))
         for x in helpable_plugins]
     pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))

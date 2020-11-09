@@ -30,9 +30,12 @@ from userbot.utils import admin_cmd
 from userbot import ALIVE_NAME, CUSTOM_STICKER_PACK_NAME, CUSTOM_ANIMATED_PACK_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
-CUSTOM_STICKER_NAME =str(CUSTOM_STICKER_PACK_NAME) if CUSTOM_STICKER_PACK_NAME else "My Boss DEVIL Volume Pack One"
-CUSTOM_ANIME_PACK = str(CUSTOM_ANIMATED_PACK_NAME) if CUSTOM_ANIMATED_PACK_NAME else "My Boss Animated Pack"
+CUSTOM_STICKER_NAME = str(
+    CUSTOM_STICKER_PACK_NAME) if CUSTOM_STICKER_PACK_NAME else "My Boss DEVIL Volume Pack One"
+CUSTOM_ANIME_PACK = str(
+    CUSTOM_ANIMATED_PACK_NAME) if CUSTOM_ANIMATED_PACK_NAME else "My Boss Animated Pack"
 FILLED_UP_DADDY = "Invalid pack selected."
+
 
 @borg.on(admin_cmd(pattern="kang ?(.*)"))
 async def _(event):
@@ -53,7 +56,7 @@ async def _(event):
     pack = 1
     userid = event.from_id
     #packname = f"FRIDAY PACK"
-    #packshortname = f"FRIDAY_{userid}_ns"  # format: Uni_Borg_userid
+    # packshortname = f"FRIDAY_{userid}_ns"  # format: Uni_Borg_userid
     if userid == 1263617196:
         packname = f"@StarkGang Packs 🎭"
         packshortname = "StarkGangPack"
@@ -74,7 +77,7 @@ async def _(event):
             packshortname = "StarkGangisgreat"
         else:
             packname = f"{user.username}'s {pack}"
-            packshortname = f"FRIDAY_{userid}" # format: Uni_Borg_userid
+            packshortname = f"FRIDAY_{userid}"  # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
         await event.edit("Invalid message type")
         return
@@ -136,12 +139,12 @@ async def _(event):
                     prevv = int(pack) - 1
                     packname = f"{user.username}'s {pack}"
                     packshortname = f"Vol_{pack}_with_{user.username}"
-                    #if userid == 948408212:
-                       # packname = f"{user.username}'s {pack}"
-                       # packshortname = "Vol._{pack}_FRIDAY_ke_locker_me"
+                    # if userid == 948408212:
+                    # packname = f"{user.username}'s {pack}"
+                    # packshortname = "Vol._{pack}_FRIDAY_ke_locker_me"
                    # else:
-                       # packname = f"Vol._{pack}_FRIDAY{userid}"
-                        #packshortname = f"Vol._{pack}_Friday_{userid}_ns"
+                    # packname = f"Vol._{pack}_FRIDAY{userid}"
+                    #packshortname = f"Vol._{pack}_Friday_{userid}_ns"
                     if not await stickerset_exists(bot_conv, packshortname):
                         await event.edit("**Pack No. **" + str(prevv) + "** SABAR KRO , Vol. **" + str(pack))
                         if is_a_s:
@@ -175,7 +178,7 @@ async def _(event):
                     else:
                         await event.edit("Pack No. " + str(prevv) + " full! Switching to Vol. " + str(pack))
                         await silently_send_message(bot_conv, "/addsticker")
-                        await silently_send_message(bot_conv, packshortname)                                                                            
+                        await silently_send_message(bot_conv, packshortname)
                         await bot_conv.send_file(
                             file=uploaded_sticker,
                             allow_cache=False,
@@ -209,7 +212,8 @@ async def _(event):
         await event.edit("Reply to any sticker to get it's pack info.")
         return
     stickerset_attr_s = rep_msg.document.attributes
-    stickerset_attr = find_instance(stickerset_attr_s, DocumentAttributeSticker)
+    stickerset_attr = find_instance(
+        stickerset_attr_s, DocumentAttributeSticker)
     if not stickerset_attr.stickerset:
         await event.edit("sticker does not belong to a pack.")
         return
@@ -246,7 +250,8 @@ async def _(event):
         if not reply_message.sticker:
             return
         sticker = reply_message.sticker
-        sticker_attrib = find_instance(sticker.attributes, DocumentAttributeSticker)
+        sticker_attrib = find_instance(
+            sticker.attributes, DocumentAttributeSticker)
         if not sticker_attrib.stickerset:
             await event.reply("This sticker is not part of a pack")
             return
@@ -257,7 +262,8 @@ async def _(event):
             file_ext_ns_ion = "tgs"
             file_caption = "Forward the ZIP file to @AnimatedStickersRoBot to get lottIE JSON containing the vector information."
         sticker_set = await borg(GetStickerSetRequest(sticker_attrib.stickerset))
-        pack_file = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, sticker_set.set.short_name, "pack.txt")
+        pack_file = os.path.join(
+            Config.TMP_DOWNLOAD_DIRECTORY, sticker_set.set.short_name, "pack.txt")
         if os.path.isfile(pack_file):
             os.remove(pack_file)
         # Sticker emojis are retrieved as a mapping of
@@ -268,20 +274,23 @@ async def _(event):
         for pack in sticker_set.packs:
             for document_id in pack.documents:
                 emojis[document_id] += pack.emoticon
+
         async def download(sticker, emojis, path, file):
             await borg.download_media(sticker, file=os.path.join(path, file))
             with open(pack_file, "a") as f:
-                f.write(f"{{'image_file': '{file}','emojis':{emojis[sticker.id]}}},")
+                f.write(
+                    f"{{'image_file': '{file}','emojis':{emojis[sticker.id]}}},")
         pending_tasks = [
             asyncio.ensure_future(
-                download(document, emojis, Config.TMP_DOWNLOAD_DIRECTORY + sticker_set.set.short_name, f"{i:03d}.{file_ext_ns_ion}")
+                download(document, emojis, Config.TMP_DOWNLOAD_DIRECTORY +
+                         sticker_set.set.short_name, f"{i:03d}.{file_ext_ns_ion}")
             ) for i, document in enumerate(sticker_set.documents)
         ]
         await event.edit(f"Downloading {sticker_set.set.count} sticker(s) to .{Config.TMP_DOWNLOAD_DIRECTORY}{sticker_set.set.short_name}...")
         num_tasks = len(pending_tasks)
         while 1:
             done, pending_tasks = await asyncio.wait(pending_tasks, timeout=2.5,
-                return_when=asyncio.FIRST_COMPLETED)
+                                                     return_when=asyncio.FIRST_COMPLETED)
             try:
                 await event.edit(
                     f"Downloaded {num_tasks - len(pending_tasks)}/{sticker_set.set.count}")
@@ -292,7 +301,8 @@ async def _(event):
         await event.edit("Downloading to my local completed")
         # https://gist.github.com/udf/e4e3dbb2e831c8b580d8fddd312714f7
         directory_name = Config.TMP_DOWNLOAD_DIRECTORY + sticker_set.set.short_name
-        zipf = zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED)
+        zipf = zipfile.ZipFile(directory_name + ".zip",
+                               "w", zipfile.ZIP_DEFLATED)
         zipdir(directory_name, zipf)
         zipf.close()
         await borg.send_file(
@@ -390,7 +400,8 @@ def resize_image(image, save_locaton):
 
 
 def progress(current, total):
-    logger.info("Uploaded: {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
+    logger.info("Uploaded: {} of {}\nCompleted {}".format(
+        current, total, (current / total) * 100))
 
 
 def find_instance(items, class_or_tuple):
