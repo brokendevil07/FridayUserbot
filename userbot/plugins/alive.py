@@ -23,6 +23,8 @@ pm_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
 pm_caption += "**เ ɦαƭε รσ૨૨ყ / ℓเα૨ / ƒαҡε / & µ [ƭɦε ɦεℓℓ σωɳε૨]** \n \n\n"
 
 pm_caption += "Copyright : By [StarkGang@Github]\n"
+
+
 # @command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
