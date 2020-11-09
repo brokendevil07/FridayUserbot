@@ -5,8 +5,8 @@ from datetime import datetime
 from pathlib import Path
 DELETE_TIMEOUT = 5
 
-@friday.on(friday_on_cmd(pattern="install", outgoing=True))
-async def install(event):
+@friday.on(friday_on_cmd(pattern="use", outgoing=True))
+async def use(event):
     if event.fwd_from:
         return
     if event.reply_to_msg_id:
