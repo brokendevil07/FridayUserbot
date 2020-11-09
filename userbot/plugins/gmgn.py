@@ -1,10 +1,12 @@
 # catuser bot fayash
 
 import asyncio
+from platform import uname
+
 from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import ChannelParticipantsAdmins
-from platform import uname
+
 from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd
 

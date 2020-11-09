@@ -3,31 +3,30 @@ Available Commands:
 .kang [Optional Emoji]
 .packinfo
 .getsticker"""
-from telethon import events
-from io import BytesIO
-from PIL import Image
 import asyncio
 import datetime
-from collections import defaultdict
 import math
 import os
-import requests
 import zipfile
-from telethon.errors.rpcerrorlist import StickersetInvalidError
+from collections import defaultdict
+from io import BytesIO
+
+import requests
+from PIL import Image
+from telethon import events
 from telethon.errors import MessageNotModifiedError
+from telethon.errors.rpcerrorlist import StickersetInvalidError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import (
-    DocumentAttributeFilename,
-    DocumentAttributeSticker,
-    InputMediaUploadedDocument,
-    InputPeerNotifySettings,
-    InputStickerSetID,
-    InputStickerSetShortName,
-    MessageMediaPhoto,
-)
+from telethon.tl.types import (DocumentAttributeFilename,
+                               DocumentAttributeSticker,
+                               InputMediaUploadedDocument,
+                               InputPeerNotifySettings, InputStickerSetID,
+                               InputStickerSetShortName, MessageMediaPhoto)
+
+from userbot import (ALIVE_NAME, CUSTOM_ANIMATED_PACK_NAME,
+                     CUSTOM_STICKER_PACK_NAME)
 from userbot.utils import admin_cmd
-from userbot import ALIVE_NAME, CUSTOM_STICKER_PACK_NAME, CUSTOM_ANIMATED_PACK_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
 CUSTOM_STICKER_NAME = (
