@@ -18,14 +18,17 @@ from telethon.errors import MessageNotModifiedError
 from telethon.errors.rpcerrorlist import StickersetInvalidError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import (DocumentAttributeFilename,
-                               DocumentAttributeSticker,
-                               InputMediaUploadedDocument,
-                               InputPeerNotifySettings, InputStickerSetID,
-                               InputStickerSetShortName, MessageMediaPhoto)
+from telethon.tl.types import DocumentAttributeFilename
+from telethon.tl.types import DocumentAttributeSticker
+from telethon.tl.types import InputMediaUploadedDocument
+from telethon.tl.types import InputPeerNotifySettings
+from telethon.tl.types import InputStickerSetID
+from telethon.tl.types import InputStickerSetShortName
+from telethon.tl.types import MessageMediaPhoto
 
-from userbot import (ALIVE_NAME, CUSTOM_ANIMATED_PACK_NAME,
-                     CUSTOM_STICKER_PACK_NAME)
+from userbot import ALIVE_NAME
+from userbot import CUSTOM_ANIMATED_PACK_NAME
+from userbot import CUSTOM_STICKER_PACK_NAME
 from userbot.utils import admin_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"

@@ -6,7 +6,11 @@ import re
 import sys
 from math import ceil
 
-from telethon import __version__, custom, errors, events, functions
+from telethon import __version__
+from telethon import custom
+from telethon import errors
+from telethon import events
+from telethon import functions
 
 from userbot import CMD_LIST
 
